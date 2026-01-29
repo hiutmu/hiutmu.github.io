@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CẤU HÌNH CƠ BẢN --- */
+        :root {
+            --primary-color: #ff7eb3;
+            --secondary-color: #ff758c;
+            --bg-color: #ffe6fa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe6fa 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+
+        .cake {
+            position: relative;
+            width: 250px;
+            height: 200px;
+            margin-bottom: 50px;
+        }
+
+        .plate {
+            width: 270px;
+            height: 110px;
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0,0,0,0.5);
+        }
+
+        .cake > * { position: absolute; }
+
+        .layer {
+            position: absolute;
+            display: block;
+            width: 250px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #553c13; 
+            box-shadow: 0 2px 0px #6a4b18, 0 4px 0px #33240b, 0 6px 0px #32230b, 0 30px 40px rgba(0,0,0,0.1);
+        }
+
+        .layer-top { top: 0px; }
+        .layer-middle { top: 33px; }
+        .layer-bottom { top: 66px; }
+
+        .icing {
+            top: 2px;
+            left: 5px;
+            background-color: #f0e4d0;
+            width: 240px;
+            height: 90px;
+            border-radius: 50%;
+        }
+
+        .icing:before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 5px;
+            bottom: 6px;
+            left: 5px;
+            background-color: #f4ebdc;
+            box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .candle {
+            background-color: #7B020B;
+            width: 16px;
+            height: 50px;
+            border-radius: 8px / 4px;
+            top: -20px;
+            left: 50%;
+            margin-left: -8px;
+            z-index: 10;
+        }
+
+        .candle:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 16px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ad030f;
+        }
+
+        .flame {
+            position: absolute;
+            background-color: orange;
+            width: 15px;
+            height: 35px;
+            border-radius: 10px 10px 4px 4px / 25px 25px 10px 10px;
+            top: -34px;
+            left: 50%;
+            margin-left: -7.5px;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+            transform-origin: 50% 90%;
+            animation: flicker 1s ease-in-out alternate infinite;
+        }
+
+        @keyframes flicker {
+            0% { transform: skewX(5deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2); }
+            25% { transform: skewX(-5deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5); }
+            50% { transform: skewX(10deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3); }
+            75% { transform: skewX(-10deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4); }
+            100% { transform: skewX(5deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5); }
+        }
+
+        .heart-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 126, 179, 0.5);
+            animation: pulseBtn 1.5s infinite;
+            font-family: 'Dancing Script', cursive;
+            margin-top: 20px;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .card-container {
+            max-width: 800px;
+            width: 90%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+            display: none;
+            position: relative;
+            animation: fadeIn 1.5s;
+            margin: 20px 0;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--secondary-color);
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .message { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 30px; }
+        
+        .polaroid {
+            background: white; padding: 10px 10px 30px 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: rotate(-2deg); transition: transform 0.3s ease; border: 1px solid #eee;
+        }
+        .polaroid:nth-child(even) { transform: rotate(2deg); }
+        .polaroid:hover { transform: scale(1.05) rotate(0deg); z-index: 10; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .polaroid img { width: 100%; height: 180px; object-fit: cover; border-radius: 2px; }
+        .caption { font-family: 'Dancing Script', cursive; color: #777; margin-top: 10px; font-size: 1.2rem; }
+
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+
+        /* --- FOOTER & LINK BÍ MẬT --- */
+        .footer { margin-top: 50px; padding-top: 20px; border-top: 1px dashed #ffb6c1; }
+        
+        .secret-link {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background-color: #ff758c;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+        }
+        
+        .secret-link:hover {
+            background-color: #ff5e78;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .card-container { padding: 20px; }
+            .cake { transform: scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <div class="cake">
+            <div class="plate"></div>
+            <div class="layer layer-bottom"></div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-top"></div>
+            <div class="icing"></div>
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+        </div>
+        
+        <h2 style="color: #ff758c; font-family: 'Dancing Script'; font-size: 2rem; margin-top: 0;">31-01-2026 rùii chúc mừng sinh nhật Nganlee!</h2>
+        <button class="heart-btn" onclick="openCard()">Thổi nến & Nhận thư  🎂</button>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="card-container" id="main-card">
+        <h1>Happy Birthday! 🎉</h1>
+        
+        <div class="message">
+            <p>Gửi nganlee, ngày của NganLeebubu 31-01-2026 !</p>
+            <p>
+                Hii Ngânlee bubu tớ nèeee ( dudu nèeee ) !!
+- Hôm nay là sinh nhật của xinh nhất !! chúccc ngânlee mạnh khỏe ( không còn bệnh tật gì nữaaaaaa )  !! Mãiiii mãiii xinhh đẹpppp tỏa sángg tự tinn vàooo bản thânnn nháaaa ( vì nganleee rấttt xinhh đẹpppp ) ; Cònn nữaaaa chúcc nganleee luôn mayy mắnnn trong họccc tậppp và cônggg việcccc để trông ngannn luônnn siuuu ngầuuuuuuu hehe . Cuối cùnggg dùuuu saooo vẫnn luônn phảii thật hạnhhh phúcc nhéee tớ monggg cuộc sống sẽ luônn gửi đếnn ngann nhữnggg điềuu đẹppp nhấttt <3 <3 .
+            </p>
+        </div>
+
+        <div class="photo-gallery">
+            <div class="polaroid">
+                <img src="./Ảnh chụp màn hình 2026-01-02 201747.png" alt="Ảnh 1">
+                <div class="caption">Mãi tươi cười bên những người yêu dấu </div>
+            </div>
+            <div class="polaroid">
+                <img src="./IMG_20241202_215839.jpg" alt="Ảnh 2">
+                <div class="caption">Luôn mạnh khỏe </div>
+            </div>
+            <div class="polaroid">
+                <img src="./IMG_1769170914414_1769171748795.jpg" alt="Ảnh 3">
+                <div class="caption">Mãi xinh đẹppp </div>
+            </div>
+            <div class="polaroid">
+                <img src="./IMG_1769493838833_1769494750695.jpg" alt="Ảnh 4">
+                <div class="caption">Luôn ngầuu </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Yêu thương và cảm ơn nganlee nhìu <br><strong>Trung Híu DuDU </strong></p>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #888;">P/S: Thư tâm sự đọc sau sinh nhật nhéee </p>
+            <a href="lathu.html" class="secret-link">Đọc thư tâm sự 💌</a>
+        </div>
+    </div>
+
+    <script>
+        function openCard() {
+            document.getElementById('welcome-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcome-screen').style.display = 'none';
+                document.getElementById('main-card').style.display = 'block';
+                startConfetti();
+            }, 1000);
+        }
+
+        // --- JS PHÁO GIẤY ---
+        const canvas = document.getElementById("confetti-canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let confetti = [];
+        const colors = ['#ff7eb3', '#ff758c', '#ffd700', '#ffffff', '#87ceeb'];
+
+        function ConfettiPiece() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height - canvas.height;
+            this.size = Math.random() * 10 + 5;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.speed = Math.random() * 3 + 2;
+            this.angle = Math.random() * 2 * Math.PI;
+            this.spin = Math.random() * 0.2 - 0.1;
+
+            this.update = function() {
+                this.y += this.speed;
+                this.angle += this.spin;
+                if (this.y > canvas.height) {
+                    this.y = -this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+            };
+
+            this.draw = function() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            };
+        }
+
+        function startConfetti() {
+            for (let i = 0; i < 100; i++) {
+                confetti.push(new ConfettiPiece());
+            }
+            animate();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
